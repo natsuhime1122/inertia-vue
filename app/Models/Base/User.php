@@ -6,13 +6,14 @@
 
 namespace App\Models\Base;
 
+use App\Models\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class User
  * 
- * @property int $id
+ * @property uuid $id
  * @property string $name
  * @property string $email
  * @property Carbon|null $email_verified_at
@@ -20,14 +21,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property string|null $remember_token
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
+ * @property int $role_id
+ * 
+ * @property Role $role
  *
  * @package App\Models\Base
  */
 class User extends Model
 {
 	protected $table = 'users';
+	public $incrementing = false;
 
 	protected $casts = [
-		'email_verified_at' => 'datetime'
+		'id' => 'uuid',
+		'email_verified_at' => 'datetime',
+		'role_id' => 'int'
 	];
+
+	public function role()
+	{
+		return $this->belongsTo(Role::class);
+	}
 }
