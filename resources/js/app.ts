@@ -1,13 +1,13 @@
-import "./bootstrap"
-import "../css/app.css"
+import "./bootstrap";
+import "../css/app.css";
 
-import { createApp, h, type DefineComponent } from "vue"
-import { createInertiaApp } from "@inertiajs/vue3"
-import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers"
-import { ZiggyVue } from "../../vendor/tightenco/ziggy"
+import { createApp, h, type DefineComponent } from "vue";
+import { createInertiaApp } from "@inertiajs/vue3";
+import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
+import { ZiggyVue } from "../../vendor/tightenco/ziggy";
 
 // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-const appName: string = import.meta.env.VITE_APP_NAME || "Laravel"
+const appName: string = import.meta.env.VITE_APP_NAME || "Laravel";
 
 void createInertiaApp({
   title: (title) => `${title} - ${appName}`,
@@ -20,9 +20,9 @@ void createInertiaApp({
     createApp({ render: () => h(App, props) })
       .use(plugin)
       .use(ZiggyVue)
-      .mount(el)
+      .mount(el);
   },
   progress: {
     color: "#4B5563"
   }
-})
+});
